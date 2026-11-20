@@ -16,6 +16,8 @@ class LogSet(Base):
     name: Mapped[str]=mapped_column(String(100),unique=True)
     initial: Mapped[dict]=mapped_column(JSON)
     records: Mapped[list]=mapped_column(JSON)
+    sample_times: Mapped[dict]=mapped_column(JSON,default=dict)
+    parent_log_set_id: Mapped[int | None]=mapped_column(ForeignKey('log_sets.id'),nullable=True)
     description: Mapped[str]=mapped_column(String(500))
 class CrashCase(Base):
     __tablename__='crash_cases'

@@ -19,7 +19,7 @@ while True:
                 if job:
                     job.status = 'running'
                     try:
-                        job.result = recover(job.snapshot['log_set']['initial'],job.snapshot['log_set']['records'],job.snapshot['case']['crash_after'])
+                        job.result = recover(job.snapshot['log_set']['initial'],job.snapshot['log_set']['records'],job.snapshot['case']['crash_after'],job.snapshot['log_set'].get('sample_times'))
                         job.status = 'completed'
                     except ValueError as exc:
                         job.result = {'error': str(exc), 'simulation': True}
